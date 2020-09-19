@@ -24,6 +24,11 @@
 | -----------  | ----------- | ------------------------------ |
 | name         | string      | null: false                    |
 | description  | text        | null: false                    |
+| category     | string      | null: false                    |
+| condition    | string      | null: false                    |
+| shipping     | string      | null: false                    |
+| prefecture   | string      | null: false                    |
+| day          | string      | null: false                    |
 | price        | integer     | null: false                    |
 | commission   | integer     |                                |
 | profit       | integer     |                                |
