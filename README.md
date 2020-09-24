@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchases
+- has_many :orders
 
 ## items テーブル
 
@@ -34,7 +34,7 @@
 
 ### Association
 
-- has_many :purchases
+- has_many :orders
 - belongs_to :user
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
@@ -42,7 +42,7 @@
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :day
 
-## purchases テーブル
+## orders テーブル
 
 | Column | Type       | options                        |
 | ------ | ---------- | ------------------------------ |
@@ -69,5 +69,5 @@
 
 ### Associations
 
-- belongs_to :purchase
+- belongs_to :order
 - belongs_to_active_hash :prefecture
