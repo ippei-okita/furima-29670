@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :day
-  
+
   with_options presence: true do
     validates :image
     validates :name, length: { maximum: 40 }
@@ -23,5 +23,4 @@ class Item < ApplicationRecord
 
   VALID_DELIVERY_FEE_REGEX = /[0-9\d]/.freeze
   validates :price, format: { with: VALID_DELIVERY_FEE_REGEX }
-
 end
