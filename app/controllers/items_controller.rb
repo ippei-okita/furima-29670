@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new,:edit,:update]
 
   def index
     @items = Item.all.order(id: 'DESC')
@@ -24,10 +24,23 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
+
     if item.destroy
       redirect_to root_path
     else
       render :show
+    end
+    
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      redirect_to item_path(item.id)
+    else
+      render :edit
     end
   end
 
