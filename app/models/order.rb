@@ -1,7 +1,6 @@
 class Order < ApplicationRecord
-  belongs_to :user
+  has_one    :address
   belongs_to :item
-
-  validates :user_id, presence: true
-  validates :item_id, presence: true
+  belongs_to :user
+  
 end
