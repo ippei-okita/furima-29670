@@ -5,18 +5,11 @@ function price() {
 
   itemPrices.addEventListener('keyup', () => {
     const value = itemPrices.value;
-
-    if (value >= 300 && value <= 9999999) {
-      let fee = value * 0.1;
-      let gains = value - fee;
-      addTaxPrices.textContent = fee;
-      profits.textContent = gains;
-    }else {
-      let fee = 0;
-      let gains = 0;
-      addTaxPrices.textContent = fee;
-      profits.textContent = gains;
-    }
+    let fee = value * 0.1;
+    let gains = value - fee;
+    addTaxPrices.textContent = Math.floor(fee);
+    profits.textContent = Math.floor(gains);
+    
   });
 
 }
