@@ -34,7 +34,7 @@
 
 ### Association
 
-- has_many :orders
+- has_one :order
 - belongs_to :user
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
@@ -65,7 +65,7 @@
 | address       | string     | null: false                    |
 | building      | string     |                                |
 | phone_num     | string     | null: false, unique: true      |
-| purchase      | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ### Associations
 
