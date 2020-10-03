@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :ng_request, only: [:index]
+  before_action :authenticate_user!
   before_action :set_order, only: [:index, :create]
 
   def index
@@ -7,7 +9,6 @@ class OrdersController < ApplicationController
 
   def create
      @order = OrderAddress.new(order_params)
-     binding.pry
      if @order.valid?
       pay_item
       @order.save
@@ -36,4 +37,12 @@ class OrdersController < ApplicationController
     )
   end
 
+  def ng_request
+    @item = Item.find(params[:item_id])
+    if user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path
+    elsif @item.order.present?
+      redirect_to root_path
+    end
+  end
 end
