@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :day
   belongs_to :user
   has_one_attached :image
-  has_one    :order
+  has_one :order
 
   with_options presence: true do
     validates :image
@@ -21,5 +21,4 @@ class Item < ApplicationRecord
   end
 
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
-
 end

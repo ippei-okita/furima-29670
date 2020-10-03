@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:show,:destroy,:edit,:update]
+  before_action :set_item, only: [:show, :destroy, :edit, :update]
 
   def index
     @items = Item.all.order(id: 'DESC')
@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
   end
 
   def destroy
@@ -30,7 +29,7 @@ class ItemsController < ApplicationController
       render :show
     end
   end
-    
+
   def edit
   end
 

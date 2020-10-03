@@ -4,18 +4,18 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:index, :create]
 
   def index
-     @order = OrderAddress.new
+    @order = OrderAddress.new
   end
 
   def create
-     @order = OrderAddress.new(order_params)
-     if @order.valid?
+    @order = OrderAddress.new(order_params)
+    if @order.valid?
       pay_item
       @order.save
       redirect_to root_path
-     else
+    else
       render 'index'
-     end
+    end
   end
 
   private
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: params[:token],
