@@ -1,12 +1,13 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :user
-  has_one_attached :image
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
   belongs_to_active_hash :shipping
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :day
+  belongs_to :user
+  has_one_attached :image
+  has_one :order
 
   with_options presence: true do
     validates :image
@@ -20,7 +21,4 @@ class Item < ApplicationRecord
   end
 
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
-
-  VALID_DELIVERY_FEE_REGEX = /[0-9\d]/.freeze
-  validates :price, format: { with: VALID_DELIVERY_FEE_REGEX }
 end
